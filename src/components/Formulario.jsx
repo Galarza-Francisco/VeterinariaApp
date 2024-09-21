@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const Formulario = () => {
+export const Formulario = ({ agregarCita }) => {
   const [nombre, setNombre] = useState('');
   const [propietario, setPropietario] = useState('');
   const [telefono, setTelefono] = useState('');
@@ -20,23 +20,15 @@ export const Formulario = () => {
       return;
     }
 
-    // asigna id
     const id = Math.random().toString().slice(2);
+    const cita = { id, nombre, propietario, telefono, fecha, hora, sintomas };
 
-    const cita = {
-      id,
-      nombre,
-      propietario,
-      telefono,
-      fecha,
-      hora,
-      sintomas
-    };
-
-    console.log(cita);
+    // Pasar la cita a través de la prop agregarCita
+    agregarCita(cita);
 
     setMensajeExito("Cita agendada exitosamente");
 
+    // Limpiar el formulario
     setNombre('');
     setPropietario('');
     setTelefono('');
@@ -45,7 +37,7 @@ export const Formulario = () => {
     setSintomas('');
     setTimeout(() => {
       setMensajeExito('');
-    }, 3000); 
+    }, 3000);
   };
 
   return (
