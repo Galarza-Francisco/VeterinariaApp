@@ -23,12 +23,12 @@ export const Formulario = ({ agregarCita }) => {
     const id = Math.random().toString().slice(2);
     const cita = { id, nombre, propietario, telefono, fecha, hora, sintomas };
 
-    // Pasar la cita a través de la prop agregarCita
+    // Pasar la cita por la prop
     agregarCita(cita);
 
     setMensajeExito("Cita agendada exitosamente");
 
-    // Limpiar el formulario
+    // Limpiar el form
     setNombre('');
     setPropietario('');
     setTelefono('');
